@@ -1,0 +1,45 @@
+﻿<form action="/HelloMvc/Hello" method="post">
+        <div class="row">
+            <div class="col-3">姓名：</div>
+            <div class="col-9">
+                <input type="text" name="userName" value="johnny">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-3">訪客身份</div>
+            <div class="col-9">
+                <select name="visitorType">
+                    <option></option>
+                    <option>學生</option>
+                    <option>老師</option>
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-3">來自</div>
+            <div class="col-9">
+                <select name="city">
+                    <option></option>
+                    <option>台北</option>
+                    <option>台中</option>
+                    <option>高雄</option>
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-3">已簽到</div>
+            <div class="col-9">
+                <input type="radio" name="ifFormPost" value="true" id="formPostTrue"><label for="formPostTrue">是</label>                
+                <input type="radio" name="ifFormPost" value="false" checked  id="formPostFalse"><label for="formPostTrue">否</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-3">本次是第幾次參加工作坊</div>
+            <div class="col-9">
+                <input type="number" name="timesOfLabAttended">
+            </div>
+        </div>
+        <div class="row">
+            <input type="submit" value="送出">
+        </div>
+    </form>

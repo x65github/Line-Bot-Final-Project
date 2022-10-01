@@ -1,0 +1,6 @@
+﻿List<string> visitorTypeList = new List<string>();
+    List<string> cityList;
+        
+    var visitorFormFieldData = Model;
+    visitorTypeList = visitorFormFieldData.visitorTypeList;
+    cityList = visitorFormFieldData.cityList;

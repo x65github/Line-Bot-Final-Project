@@ -1,0 +1,27 @@
+﻿List<CityWeather> currentWeatherList = new List<CityWeather>(){
+            new CityWeather(){
+                name= "台北", stationCode = "TPE-001", 
+                temperature = 36.3, rainChance = 0.9, weatherDescription = "Raining"
+            }
+            ,new CityWeather(){
+                name= "台北", stationCode = "TPE-002", 
+                temperature = 33.3, rainChance = 0.1, weatherDescription = "Sunny"
+            }
+            , new CityWeather(){
+                name= "新北", stationCode = "NTPC-001", 
+                temperature = 30.3, rainChance = 0.3, weatherDescription = "Cloudy"
+            }, new CityWeather(){
+                name= "桃園", stationCode = "TYC-001", 
+                temperature = 37.6, rainChance = 0.5, weatherDescription = "Cloudy"
+            }, new CityWeather(){
+                name= "新竹", stationCode = "CHC-001", 
+                temperature = 38.1, rainChance = 0, weatherDescription = "Sunny"
+            }, new CityWeather(){
+                name= "台中", stationCode = "TCC-001", 
+                temperature = 39, rainChance = 0, weatherDescription = "Sunny"
+            }, new CityWeather(){
+                name= "高雄", stationCode = "KSC-001", 
+                temperature = 38.7, rainChance = 0, weatherDescription = "Sunny"
+            }
+        };
+    

@@ -1,0 +1,17 @@
+﻿[HttpPost]
+    public IActionResult locationWeather([FromBody]CityWeatherStation station)
+    {
+        if(station == null){
+            return BadRequest("need station paramater");
+        }
+        List<CityWeather> query = this.currentWeatherList;//new List<Weather>();
+
+        
+        
+        if(station.stationCode != null){
+            query = query.Where(f =>f.stationCode == station.stationCode).ToList();
+        }
+
+        return Ok(query);
+
+    }

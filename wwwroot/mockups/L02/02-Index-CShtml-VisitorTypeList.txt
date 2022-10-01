@@ -1,0 +1,4 @@
+﻿List<string> visitorTypeList = new List<string>();
+    visitorTypeList.Add("學生");
+    visitorTypeList.Add("老師");
+

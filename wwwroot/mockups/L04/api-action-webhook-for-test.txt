@@ -1,0 +1,15 @@
+﻿[HttpPost]
+    public IActionResult Webhook([FromBody]ReceivedFollowEvent webhookEvent)
+    {
+        //for the very 1st test from LINE Developer Console
+        //our webhook can just return HTTP 200
+        //to test don't forget to bridge local web app to the Internet via ngrok
+        // and to do that, need to comment out app.UseHttpsRedirection(); in Program.cs
+        //return Ok();
+
+        //to parse coming parameter (JSON data) to string
+        // and using Console.WriteLine to show on the terminal
+        Console.WriteLine(JsonConvert.SerializeObject(webhookEvent));
+
+        return Ok();
+    }

@@ -1,0 +1,13 @@
+﻿
+    void setWelcomeMessage(HelloUser user)
+    {
+        if (user.visitorType == "老師")
+        {
+            user.welcomeMessage = "開始今天的課程吧！";
+        }
+        else
+        {
+            user.welcomeMessage = "準備好今天的實作挑戰了嗎？";
+        }
+    }
+

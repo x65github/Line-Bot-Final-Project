@@ -1,0 +1,17 @@
+﻿@{
+    ViewData["Title"] = "Hello Mvc";
+
+    var user = @Model;
+    if(user == null){
+        <div>請回<a href="Index">此</a>輸入訪客資訊 </div>
+    }else{
+        <h1> 歡迎來自 @user.city 的 @user.visitorType,  @user.userName </h1>
+
+        <div>
+            這是第 @user.timesOfLabAttended 次參加工作坊
+        </div>
+        <div>
+            已簽到: @user.ifFormPost
+        </div>
+    }
+}

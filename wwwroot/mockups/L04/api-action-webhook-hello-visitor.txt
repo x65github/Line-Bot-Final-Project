@@ -1,0 +1,61 @@
+﻿[HttpPost]
+    public async Task<IActionResult> Webhook([FromBody] ReceivedFollowEvent webhookEvent)
+    {
+        //for the very 1st test from LINE Developer Console
+        //our webhook can just return HTTP 200
+        //to test don't forget to bridge local web app to the Internet via ngrok
+        // and to do that, need to comment out app.UseHttpsRedirection(); in Program.cs
+        //return Ok();
+
+        //to parse coming parameter (JSON data) to string
+        // and using Console.WriteLine to show on the terminal
+        //Console.WriteLine(JsonConvert.SerializeObject(webhookEvent));
+
+        if (webhookEvent.events != null)
+        {
+            //查詢是否有follow event
+            var followEvent = webhookEvent.events.Where(obj => obj.type == "follow").FirstOrDefault();
+            if (followEvent != null)
+            {
+                string? replyToken = followEvent.replyToken;
+
+                var response = await this.replyWelcomeMessage(replyToken);
+                Console.WriteLine($"send reply message & get status code: {response.StatusCode}, content: {response.Content}");
+            }
+        }
+
+        return Ok();
+    }
+
+    async Task<IRestResponse> replyWelcomeMessage(string? replyToken)
+    {
+        string apiEndpoint = "https://api.line.me/v2/bot/message/reply";
+        string lineChannelAccessToken = "kWhTwSy/vDP6NU4gG/2sIbY3XjVltHiJgroiAVQtja3lLKYD1qnKVJUznb/yJq6HP84zUx/4C/ZNTqr3Aguw8UCgBupjcwxo9Qsb4hVw8gmxKH58vDNz24AVedhUFMIlkIWi3xPlyR6jfAg5dN8URwdB04t89/1O/w1cDnyilFU=";
+
+        RestClient client;
+        //string WINDY_API = "https://api.windy.com/api/point-forecast/v2";
+        RestRequest request;
+        client = new RestClient(apiEndpoint);
+
+        request = new RestRequest();
+        request.Method = Method.POST;
+
+        //welcome message
+        ReplyMessage replyMessage = new ReplyMessage(){
+            replyToken = replyToken
+        };
+        List<TextMessage> messageList = new List<TextMessage>();
+        messageList.Add(
+            new TextMessage(){type = "text", text = "歡迎加入氣象查詢機器人"}
+        );
+        replyMessage.messages = messageList;
+
+        request.AddHeader("Content-Type", "application/json");
+        request.AddHeader("Authorization", $"Bearer {lineChannelAccessToken}");
+        request.AddJsonBody(
+            replyMessage
+        );
+
+        IRestResponse t = await client.ExecuteAsync(request, new CancellationTokenSource().Token);
+        return t;
+    }

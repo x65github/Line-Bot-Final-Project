@@ -1,0 +1,16 @@
+﻿public IActionResult Index()
+    {
+        return View();
+    }
+
+    [HttpPost]
+    public IActionResult Hello([FromForm] HelloUser user)
+    {
+        //user.ifFormPost = true;
+        return View(user);
+    }
+
+    public IActionResult Hello()
+    {
+        return View();
+    }

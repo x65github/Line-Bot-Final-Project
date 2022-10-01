@@ -1,0 +1,19 @@
+﻿    List<CityWeatherStation> geoLocationList = new List<CityWeatherStation>(){
+            new CityWeatherStation(){
+                name= "台北", stationCode = "TPE-001"
+            }
+            ,new CityWeatherStation(){
+                name= "台北", stationCode = "TPE-002"
+            }
+            , new CityWeatherStation(){
+                    name= "新北", stationCode = "NTPC-001"
+            }, new CityWeatherStation(){
+                name= "桃園", stationCode = "TYC-001"
+            }, new CityWeatherStation(){
+                name= "新竹", stationCode = "CHC-001"
+            }, new CityWeatherStation(){
+                name= "台中", stationCode = "TCC-001"}
+            , new CityWeatherStation(){
+                name= "高雄", stationCode = "KSC-001"
+                }
+        };

@@ -1,0 +1,5 @@
+﻿[HttpGet]   //不給Http Method的attribute，則所有http method均可呼叫
+    public IActionResult locationList()
+    {
+        return Ok(geoLocationList);
+    }

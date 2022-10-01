@@ -1,0 +1,74 @@
+﻿using System.Diagnostics;
+using Microsoft.AspNetCore.Mvc;
+using HelloWorldMvc.Models;
+
+namespace HelloWorldMvc.Controllers;
+
+public class HelloMvcController : Controller
+{
+    List<string> cityList = new List<string>();
+
+    VisitorFormFieldData visitorFormFieldData;
+
+    private readonly ILogger<HomeController> _logger;
+
+    public HelloMvcController(ILogger<HomeController> logger)
+    {
+        _logger = logger;
+
+        this.visitorFormFieldData = new VisitorFormFieldData();
+
+        this.visitorFormFieldData.cityList = new List<string>();
+
+        this.visitorFormFieldData.cityList.Add("台北");
+        this.visitorFormFieldData.cityList.Add("台中");
+        this.visitorFormFieldData.cityList.Add("高雄");
+        this.visitorFormFieldData.cityList.Add("花蓮");
+
+        this.visitorFormFieldData.visitorTypeList = new List<string>();
+        this.visitorFormFieldData.visitorTypeList.Add("學生");
+        this.visitorFormFieldData.visitorTypeList.Add("老師");
+        this.cityList = this.visitorFormFieldData.cityList;
+    }
+
+    public IActionResult Index()
+    {
+        //return View(cityList);
+        return View(this.visitorFormFieldData);
+    }
+
+    [HttpPost]
+    public IActionResult Hello([FromForm] HelloUser user)
+    {
+        this.setWelcomeMessage(user);
+        return View(user);
+    }
+
+    public IActionResult Hello()
+    {
+        return View();
+    }
+
+    void setWelcomeMessage(HelloUser user)
+    {
+        if (user.visitorType == "老師")
+        {
+            user.welcomeMessage = "開始今天的課程吧！";
+        }
+        else
+        {
+            user.welcomeMessage = "準備好今天的實作挑戰了嗎？";
+        }
+        // switch(user.visitorType){
+        //     case "老師":
+        //         user.welcomeMessage = "開始今天的課程吧！";
+        //         return;
+        //     case "學生":
+        //         user.welcomeMessage = "準備好今天的實作挑戰了嗎？";
+        //         return;
+        //     default:
+        //         user.welcomeMessage = "!@##&^$%你是來亂的吧！";
+        //         return;
+        // }
+    }
+}
