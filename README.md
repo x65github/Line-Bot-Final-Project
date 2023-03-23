@@ -2,7 +2,7 @@
 
 ## 環境設置
 
-### Line-Chat-Bot
+### Line-Chatbot
 使用C#作為主要撰寫程式，套用python蒐集特定頁面資訊，透過Line-chat-bot回應該法條內容。
 
 
